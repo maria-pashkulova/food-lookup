@@ -1,8 +1,13 @@
-
+import SearchFoodTable from "./components/SearchFoodTable";
+import SelectedFoodTable from "./components/SelectedFoodTable";
 
 function App() {
   return (
-    <h1>Initiazize react app</h1>
+    <div className='container mt-4'>
+      <SelectedFoodTable />
+      <SearchFoodTable />
+    </div>
+
   );
 }
 

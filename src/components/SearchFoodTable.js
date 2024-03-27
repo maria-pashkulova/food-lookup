@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-
+import styles from './SearchFoodTable.module.css';
 
 function SearchFoodTable() {
     return (
@@ -8,9 +8,13 @@ function SearchFoodTable() {
             <thead className='fs-5'>
                 <tr>
                     <th colSpan='5' className='bg-light'>
-                        <Form.Control className='mt-3 mb-3 w-auto'
-                            placeholder="Search foods..."
-                        />
+                        <div className={styles.searchContainer}>
+                            <Form.Control className='mt-3 mb-3 me-2 w-auto'
+                                placeholder="Search foods..."
+                            />
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+
                     </th>
                 </tr>
                 <tr>
@@ -45,7 +49,7 @@ function SearchFoodTable() {
                     <td>80</td>
                 </tr>
             </tbody>
-        </Table>
+        </Table >
     );
 
 }

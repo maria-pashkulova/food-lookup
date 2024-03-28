@@ -1,4 +1,5 @@
 import Table from 'react-bootstrap/Table';
+import FoodRecord from './FoodRecord';
 
 function SelectedFoodTable() {
     return (
@@ -16,28 +17,13 @@ function SelectedFoodTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
+                <FoodRecord
+                    description='Wholegrain Rolled Oats'
+                    kcal='450'
+                    protein='0.3'
+                    fat='1.2'
+                    carbs='80'
+                />
                 <tr>
                     <td className='bg-light'>Total</td>
                     <td className='bg-light'>450</td>

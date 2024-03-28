@@ -1,6 +1,9 @@
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import styles from './SearchFoodTable.module.css';
+import FoodRecord from './FoodRecord';
+
+
 
 function SearchFoodTable() {
     return (
@@ -26,28 +29,21 @@ function SearchFoodTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
-                <tr>
+                <FoodRecord
+                    description='Wholegrain Rolled Oats'
+                    kcal='450'
+                    protein='0.3'
+                    fat='1.2'
+                    carbs='80'
+                />
 
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>Wholegrain Rolled Oats</td>
-                    <td>450</td>
-                    <td>0.3</td>
-                    <td>1.2</td>
-                    <td>80</td>
-                </tr>
+                <FoodRecord
+                    description='Grilled Chicken Breast'
+                    kcal='165'
+                    protein='31'
+                    fat='3.6'
+                    carbs='0' />
+
             </tbody>
         </Table >
     );

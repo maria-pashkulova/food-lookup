@@ -31,10 +31,21 @@ function SearchFoodTable() {
     //Make search input a controlled component
     const [searchInput, setSearchInput] = useState('');
 
+    //Cancel search icon
+    const [showCancelSearch, setShowCancelSearch] = useState(false);
+
     function handleSearch(e) {
         const searchedSubstring = e.target.value;
 
         setSearchInput(searchedSubstring);
+
+        //handle whitespace input -> TODO
+        if (searchedSubstring === '') {
+            setShowCancelSearch(false);
+        } else {
+            setShowCancelSearch(true);
+        }
+
     }
 
     return (
@@ -48,7 +59,9 @@ function SearchFoodTable() {
                                 value={searchInput}
                                 onChange={handleSearch}
                             />
-                            <i className="fa-solid fa-circle-xmark"></i>
+
+                            {/* conditional rendering */}
+                            {showCancelSearch && <i className="fa-solid fa-circle-xmark"></i>}
                         </div>
 
                     </th>

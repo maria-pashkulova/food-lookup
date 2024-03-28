@@ -28,6 +28,15 @@ function SearchFoodTable() {
 
     ]);
 
+    //Make search input a controlled component
+    const [searchInput, setSearchInput] = useState('');
+
+    function handleSearch(e) {
+        const searchedSubstring = e.target.value;
+
+        setSearchInput(searchedSubstring);
+    }
+
     return (
         <Table bordered hover className='mt-5'>
             <thead className='fs-5'>
@@ -36,8 +45,10 @@ function SearchFoodTable() {
                         <div className={styles.searchContainer}>
                             <Form.Control className='mt-3 mb-3 me-2 w-auto'
                                 placeholder="Search foods..."
+                                value={searchInput}
+                                onChange={handleSearch}
                             />
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i className="fa-solid fa-circle-xmark"></i>
                         </div>
 
                     </th>

@@ -2,10 +2,32 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import styles from './SearchFoodTable.module.css';
 import FoodRecord from './FoodRecord';
-
+import { useState } from 'react';
 
 
 function SearchFoodTable() {
+
+    //simulate search result
+    const [foodItemsMatch, setFoodItems] = useState([
+        {
+            id: "2",
+            description: "Banana",
+            kcal: 105,
+            protein: 1.3,
+            fat: 0.4,
+            carbs: 27
+        },
+        {
+            id: "4",
+            description: "Broccoli",
+            kcal: 55,
+            protein: 3.7,
+            fat: 0.6,
+            carbs: 11
+        }
+
+    ]);
+
     return (
         <Table bordered hover className='mt-5'>
             <thead className='fs-5'>
@@ -29,21 +51,16 @@ function SearchFoodTable() {
                 </tr>
             </thead>
             <tbody>
-                <FoodRecord
-                    description='Wholegrain Rolled Oats'
-                    kcal='450'
-                    protein='0.3'
-                    fat='1.2'
-                    carbs='80'
-                />
-
-                <FoodRecord
-                    description='Grilled Chicken Breast'
-                    kcal='165'
-                    protein='31'
-                    fat='3.6'
-                    carbs='0' />
-
+                {foodItemsMatch.map(food => (
+                    <FoodRecord
+                        key={food.id}
+                        description={food.description}
+                        kcal={food.kcal}
+                        protein={food.protein}
+                        fat={food.fat}
+                        carbs={food.carbs}
+                    />
+                ))}
             </tbody>
         </Table >
     );

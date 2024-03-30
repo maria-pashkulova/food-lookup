@@ -4,31 +4,28 @@ import { useState } from "react";
 
 function App() {
 
-  const [selectedFoodItems, setSelectedFoodItems] = useState([
-    {
-      id: "2",
-      description: "Banana",
-      kcal: 105,
-      protein: 1.3,
-      fat: 0.4,
-      carbs: 27
-    },
-    {
-      id: "4",
-      description: "Broccoli",
-      kcal: 55,
-      protein: 3.7,
-      fat: 0.6,
-      carbs: 11
+  const [selectedFoodItems, setSelectedFoodItems] = useState([]);
+
+  //handle add food item in Selected Food Table
+  function handleAddFoodItem(foodItem) {
+    const isSelected = selectedFoodItems.some((selectedFood) => selectedFood.id === foodItem.id);
+    if (!isSelected) {
+      setSelectedFoodItems(selectedFoodItems => [...selectedFoodItems, foodItem]);
     }
+  }
 
-  ]);
-
+  //handle remove food item in Selected Food Table
+  function handleRemoveFoodItem(foodItem) {
+    setSelectedFoodItems(selectedFoodItems => selectedFoodItems.filter(currFoodItem => currFoodItem.id !== foodItem.id))
+  }
 
   return (
     <div className='container mt-4'>
-      <SelectedFoodTable foodItems={selectedFoodItems} />
-      <SearchFoodTable />
+      <SelectedFoodTable
+        foodItems={selectedFoodItems}
+        onFoodItemClick={handleRemoveFoodItem}
+      />
+      <SearchFoodTable onFoodItemClick={handleAddFoodItem} />
     </div>
 
   );

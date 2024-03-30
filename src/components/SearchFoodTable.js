@@ -5,7 +5,9 @@ import FoodRecord from './FoodRecord';
 import { useState } from 'react';
 
 
-function SearchFoodTable() {
+function SearchFoodTable({
+    onFoodItemClick
+}) {
 
     //simulate search result
     const [foodItemsMatch, setFoodItems] = useState([
@@ -75,14 +77,11 @@ function SearchFoodTable() {
                 </tr>
             </thead>
             <tbody>
-                {foodItemsMatch.map(food => (
+                {foodItemsMatch.map(foodItem => (
                     <FoodRecord
-                        key={food.id}
-                        description={food.description}
-                        kcal={food.kcal}
-                        protein={food.protein}
-                        fat={food.fat}
-                        carbs={food.carbs}
+                        key={foodItem.id}
+                        foodItem={foodItem}
+                        onFoodItemClick={onFoodItemClick}
                     />
                 ))}
             </tbody>

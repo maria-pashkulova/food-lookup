@@ -2,7 +2,10 @@ import Table from 'react-bootstrap/Table';
 import FoodRecord from './FoodRecord';
 import { sumNutritionColumnValues } from '../helpers/helpers';
 
-function SelectedFoodTable({ foodItems }) {
+function SelectedFoodTable({
+    foodItems,
+    onFoodItemClick
+}) {
     return (
         <Table bordered hover>
             <thead className='fs-5'>
@@ -18,14 +21,11 @@ function SelectedFoodTable({ foodItems }) {
                 </tr>
             </thead>
             <tbody>
-                {foodItems.map(food => (
+                {foodItems.map(foodItem => (
                     <FoodRecord
-                        key={food.id}
-                        description={food.description}
-                        kcal={food.kcal}
-                        protein={food.protein}
-                        fat={food.fat}
-                        carbs={food.carbs}
+                        key={foodItem.id}
+                        foodItem={foodItem}
+                        onFoodItemClick={onFoodItemClick}
                     />
                 ))}
 

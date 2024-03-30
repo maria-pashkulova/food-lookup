@@ -1,18 +1,15 @@
 function FoodRecord({
-    description,
-    kcal,
-    protein,
-    fat,
-    carbs
+    foodItem,
+    onFoodItemClick
 }) {
 
     return (
-        <tr>
-            <td>{description}</td>
-            <td>{kcal}</td>
-            <td>{protein}</td>
-            <td>{fat}</td>
-            <td>{carbs}</td>
+        <tr onClick={() => onFoodItemClick(foodItem)}>
+            <td>{foodItem.description}</td>
+            <td>{foodItem.kcal}</td>
+            <td>{foodItem.protein}</td>
+            <td>{foodItem.fat}</td>
+            <td>{foodItem.carbs}</td>
         </tr>
     )
 

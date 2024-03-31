@@ -2,33 +2,15 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import styles from './SearchFoodTable.module.css';
 import FoodRecord from './FoodRecord';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { search } from '../api/foodService';
 
 
 function SearchFoodTable({
     onFoodItemClick
 }) {
 
-    //simulate search result
-    const [foodItemsMatch, setFoodItems] = useState([
-        {
-            id: "2",
-            description: "Banana",
-            kcal: 105,
-            protein: 1.3,
-            fat: 0.4,
-            carbs: 27
-        },
-        {
-            id: "4",
-            description: "Broccoli",
-            kcal: 55,
-            protein: 3.7,
-            fat: 0.6,
-            carbs: 11
-        }
-
-    ]);
+    const [foodItemsMatch, setFoodItemsMatch] = useState([]);
 
     //Make search input a controlled component
     const [searchInput, setSearchInput] = useState('');
@@ -36,13 +18,26 @@ function SearchFoodTable({
     //Cancel search icon
     const [showCancelSearch, setShowCancelSearch] = useState(false);
 
+    useEffect(() => {
+        //Make request when user has entered at least 3 characters 
+        //(whitespace handling included)
+
+        if (searchInput.trim().length >= 3) {
+            search(searchInput.trim(), (searchMatches => setFoodItemsMatch(searchMatches)))
+                .catch(err => console.log(err))
+        }
+        else if (searchInput.trim() === '') {
+            setFoodItemsMatch([]);
+        }
+    }, [searchInput]);
+
+
     function handleSearch(e) {
-        const searchedSubstring = e.target.value;
+        const searchQuery = e.target.value;
 
-        setSearchInput(searchedSubstring);
+        setSearchInput(searchQuery);
 
-        //handle whitespace input -> TODO
-        if (searchedSubstring === '') {
+        if (searchQuery === '') {
             setShowCancelSearch(false);
         } else {
             setShowCancelSearch(true);

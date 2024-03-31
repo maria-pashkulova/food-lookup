@@ -45,6 +45,12 @@ function SearchFoodTable({
 
     }
 
+    function handleSearchCancel() {
+        setSearchInput('');
+        setFoodItemsMatch([]);
+        setShowCancelSearch(false);
+    }
+
     return (
         <Table bordered hover className='mt-5'>
             <thead className='fs-5'>
@@ -58,7 +64,11 @@ function SearchFoodTable({
                             />
 
                             {/* conditional rendering */}
-                            {showCancelSearch && <i className="fa-solid fa-circle-xmark"></i>}
+                            {showCancelSearch &&
+                                <i
+                                    onClick={handleSearchCancel}
+                                    className="fa-solid fa-circle-xmark"
+                                ></i>}
                         </div>
 
                     </th>

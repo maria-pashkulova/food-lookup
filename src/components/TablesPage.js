@@ -9,7 +9,7 @@ function TablesPage() {
     const [selectedFoodItems, setSelectedFoodItems] = useState([]);
 
     //handle add food item in Selected Food Table
-    function handleAddFoodItem(foodItem) {
+    const handleAddFoodItem = (foodItem) => {
         const isSelected = selectedFoodItems.some((selectedFood) => selectedFood.id === foodItem.id);
         if (!isSelected) {
             setSelectedFoodItems(selectedFoodItems => [...selectedFoodItems, foodItem]);
@@ -17,7 +17,7 @@ function TablesPage() {
     }
 
     //handle remove food item in Selected Food Table
-    function handleRemoveFoodItem(foodItem) {
+    const handleRemoveFoodItem = (foodItem) => {
         setSelectedFoodItems(selectedFoodItems => selectedFoodItems.filter(currFoodItem => currFoodItem.id !== foodItem.id))
     }
 

@@ -32,7 +32,7 @@ function SearchFoodTable({
     }, [searchInput]);
 
 
-    function handleSearch(e) {
+    const handleSearch = (e) => {
         const searchQuery = e.target.value;
 
         setSearchInput(searchQuery);
@@ -45,7 +45,7 @@ function SearchFoodTable({
 
     }
 
-    function handleSearchCancel() {
+    const handleSearchCancel = () => {
         setSearchInput('');
         setFoodItemsMatch([]);
         setShowCancelSearch(false);

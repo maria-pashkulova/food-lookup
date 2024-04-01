@@ -63,6 +63,22 @@
       "protein": 3,
       "fat": 11,
       "carbs": 3
+    },
+    {
+      "description": "Pepperoni Pizza",
+      "kcal": 500,
+      "protein": 20,
+      "fat": 36.7,
+      "carbs": 87.7,
+      "id": "hvGKkNn"
+    },
+    {
+      "description": "Hummus Mezze",
+      "kcal": 234,
+      "protein": 67.7,
+      "fat": 15,
+      "carbs": 34.5,
+      "id": "f9gYH9h"
     }
   ]
 }

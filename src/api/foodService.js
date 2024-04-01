@@ -28,3 +28,22 @@ function parseJSON(response) {
     return response.json();
 }
 
+
+//foodData => {description, kcal,protein,fat,carbs}
+export function createFoodItem({ description, kcal, protein, fat, carbs }) {
+
+    return fetch(baseUrl, {
+        method: 'POST',
+        body: JSON.stringify({
+            description: description,
+            kcal: Number(kcal),
+            protein: Number(protein),
+            fat: Number(fat),
+            carbs: Number(carbs)
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(checkStatus);
+}

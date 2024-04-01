@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import styles from './SearchFoodTable.module.css';
 import FoodRecord from './FoodRecord';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { search } from '../api/foodService';
 
 
@@ -18,30 +18,21 @@ function SearchFoodTable({
     //Cancel search icon
     const [showCancelSearch, setShowCancelSearch] = useState(false);
 
-    useEffect(() => {
-        //Make request when user has entered at least 3 characters 
-        //(whitespace handling included)
-
-        if (searchInput.trim().length >= 3) {
-            search(searchInput.trim(), (searchMatches => setFoodItemsMatch(searchMatches)))
-                .catch(err => console.log(err))
-        }
-        else if (searchInput.trim() === '') {
-            setFoodItemsMatch([]);
-        }
-    }, [searchInput]);
-
-
     const handleSearch = (e) => {
+        //controlled component
         const searchQuery = e.target.value;
-
         setSearchInput(searchQuery);
 
-        if (searchQuery === '') {
-            setShowCancelSearch(false);
-        } else {
-            setShowCancelSearch(true);
+        //Make request when user has entered at least 3 characters 
+        //(whitespace handling included)
+        if (searchQuery.trim().length >= 3) {
+            search(searchQuery.trim(), (searchMatches => setFoodItemsMatch(searchMatches)))
+                .catch(err => console.log(err))
+        } else if (searchQuery.trim() === '') {
+            setFoodItemsMatch([]);
         }
+
+        setShowCancelSearch(searchQuery.length >= 1);
 
     }
 

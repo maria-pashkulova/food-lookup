@@ -1,6 +1,8 @@
+import Button from 'react-bootstrap/Button';
 import SearchFoodTable from "./SearchFoodTable";
 import SelectedFoodTable from "./SelectedFoodTable";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function TablesPage() {
 
@@ -26,6 +28,7 @@ function TablesPage() {
                 onFoodItemClick={handleRemoveFoodItem}
             />
             <SearchFoodTable onFoodItemClick={handleAddFoodItem} />
+            <Button as={Link} to="/create" variant="primary">Create Food</Button>
         </div>
 
     );

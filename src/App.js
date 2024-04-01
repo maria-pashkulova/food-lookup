@@ -1,34 +1,18 @@
-import SearchFoodTable from "./components/SearchFoodTable";
-import SelectedFoodTable from "./components/SelectedFoodTable";
-import { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
+import TablesPage from './components/TablesPage';
+import CreateFoodPage from './components/CreateFoodPage';
+import NotFoundPage from './components/NotFoundPage';
+
 
 function App() {
 
-  const [selectedFoodItems, setSelectedFoodItems] = useState([]);
-
-  //handle add food item in Selected Food Table
-  function handleAddFoodItem(foodItem) {
-    const isSelected = selectedFoodItems.some((selectedFood) => selectedFood.id === foodItem.id);
-    if (!isSelected) {
-      setSelectedFoodItems(selectedFoodItems => [...selectedFoodItems, foodItem]);
-    }
-  }
-
-  //handle remove food item in Selected Food Table
-  function handleRemoveFoodItem(foodItem) {
-    setSelectedFoodItems(selectedFoodItems => selectedFoodItems.filter(currFoodItem => currFoodItem.id !== foodItem.id))
-  }
-
   return (
-    <div className='container mt-4'>
-      <SelectedFoodTable
-        foodItems={selectedFoodItems}
-        onFoodItemClick={handleRemoveFoodItem}
-      />
-      <SearchFoodTable onFoodItemClick={handleAddFoodItem} />
-    </div>
-
-  );
+    <Routes>
+      <Route path='/' element={<TablesPage />} />
+      <Route path='/create' element={<CreateFoodPage />} />;
+      <Route path='*' element={<NotFoundPage />} />
+    </Routes>
+  )
 }
 
 export default App;

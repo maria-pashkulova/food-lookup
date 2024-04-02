@@ -35,7 +35,7 @@ export function createFoodItem({ description, kcal, protein, fat, carbs }) {
     return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify({
-            description: description,
+            description: description.trim(),
             kcal: Number(kcal),
             protein: Number(protein),
             fat: Number(fat),

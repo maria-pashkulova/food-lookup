@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createFoodItem } from '../api/foodService';
+import validateFormInput from '../helpers/formValidation';
 
 const formInitialState = {
     description: '',
@@ -18,7 +19,11 @@ const formInitialState = {
 function CreateFoodPage() {
 
     const navigate = useNavigate();
+
     const [foodData, setFoodData] = useState(formInitialState);
+
+    //error message for each form input; client-side validation
+    const [errors, setErrors] = useState({});
 
     const handleInputChange = (e) => {
 
@@ -31,6 +36,13 @@ function CreateFoodPage() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
+        //validate before making a request
+        const formErrors = validateFormInput(foodData);
+        setErrors(formErrors);
+
+        //prevent request if there are errors
+        if (Object.keys(formErrors).length) return;
 
         createFoodItem(foodData)
             .then(() => navigate('/'))
@@ -49,7 +61,11 @@ function CreateFoodPage() {
                             name="description"
                             value={foodData.description}
                             onChange={handleInputChange}
+                            isInvalid={!!errors.description}
                             placeholder="Enter description" />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.description}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
@@ -60,7 +76,11 @@ function CreateFoodPage() {
                             name="kcal"
                             value={foodData.kcal}
                             onChange={handleInputChange}
+                            isInvalid={!!errors.kcal}
                             placeholder="Enter kcal" />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.kcal}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} controlId="protein">
                         <Form.Label>Protein</Form.Label>
@@ -69,7 +89,11 @@ function CreateFoodPage() {
                             name="protein"
                             value={foodData.protein}
                             onChange={handleInputChange}
+                            isInvalid={!!errors.protein}
                             placeholder="Enter grams of protein" />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.protein}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
 
@@ -81,7 +105,11 @@ function CreateFoodPage() {
                             name="fat"
                             value={foodData.fat}
                             onChange={handleInputChange}
+                            isInvalid={!!errors.fat}
                             placeholder="Enter grams of fat" />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.fat}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} controlId="carbs">
                         <Form.Label>Carbs</Form.Label>
@@ -90,7 +118,11 @@ function CreateFoodPage() {
                             name="carbs"
                             value={foodData.carbs}
                             onChange={handleInputChange}
+                            isInvalid={!!errors.carbs}
                             placeholder="Enter grams of carbs" />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.carbs}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
 

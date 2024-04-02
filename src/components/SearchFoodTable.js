@@ -5,11 +5,11 @@ import FoodRecord from './FoodRecord';
 import ServerErrorModal from './ServerErrorModal';
 import { useState } from 'react';
 import { search } from '../api/foodService';
+import { useAddFoodItem } from './SelectedFoodItemsContext';
 
 
-function SearchFoodTable({
-    onFoodItemClick
-}) {
+function SearchFoodTable() {
+    const onFoodItemClick = useAddFoodItem();
 
     const [foodItemsMatch, setFoodItemsMatch] = useState([]);
 

@@ -1,11 +1,13 @@
 import Table from 'react-bootstrap/Table';
 import FoodRecord from './FoodRecord';
 import { sumNutritionColumnValues } from '../helpers/helpers';
+import { useSelectedFoodItems, useRemoveFoodItem } from './SelectedFoodItemsContext';
 
-function SelectedFoodTable({
-    foodItems,
-    onFoodItemClick
-}) {
+function SelectedFoodTable() {
+
+    const foodItems = useSelectedFoodItems();
+    const onFoodItemClick = useRemoveFoodItem();
+
     return (
         <Table bordered hover>
             <thead className='fs-5'>

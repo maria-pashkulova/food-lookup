@@ -87,6 +87,94 @@
       "fat": 20,
       "carbs": 60,
       "id": "uDc-Uu_"
+    },
+    {
+      "description": "Butter chicken",
+      "kcal": 345,
+      "protein": 56,
+      "fat": 33,
+      "carbs": 43,
+      "id": "TBWXcFJ"
+    },
+    {
+      "description": "Chicken casserole",
+      "kcal": 235,
+      "protein": 34,
+      "fat": 34.5,
+      "carbs": 64.6,
+      "id": "phhb2qp"
+    },
+    {
+      "description": "Asian BBQ chicken",
+      "kcal": 456,
+      "protein": 43,
+      "fat": 45,
+      "carbs": 34.6,
+      "id": "gDdxK_a"
+    },
+    {
+      "description": "Buffalo chicken Alfredo",
+      "kcal": 411,
+      "protein": 34,
+      "fat": 53,
+      "carbs": 45,
+      "id": "L1g60OQ"
+    },
+    {
+      "description": "Chicken Marsala",
+      "kcal": 343,
+      "protein": 33,
+      "fat": 31,
+      "carbs": 34,
+      "id": "L2owt9T"
+    },
+    {
+      "description": "Asian chicken sandwich",
+      "kcal": 234,
+      "protein": 65.8,
+      "fat": 54.6,
+      "carbs": 35,
+      "id": "bYEotIL"
+    },
+    {
+      "description": "Chicken Chettinad",
+      "kcal": 456,
+      "protein": 64,
+      "fat": 45,
+      "carbs": 23,
+      "id": "XrELr0W"
+    },
+    {
+      "description": "Chicken & tomatoes pasta",
+      "kcal": 478,
+      "protein": 45,
+      "fat": 34,
+      "carbs": 65,
+      "id": "sqE1ZG3"
+    },
+    {
+      "description": "Cheddar chicken potpie",
+      "kcal": 545,
+      "protein": 65,
+      "fat": 54,
+      "carbs": 45,
+      "id": "hW3pAbz"
+    },
+    {
+      "description": "Roast chicken with tomatoes",
+      "kcal": 345,
+      "protein": 66,
+      "fat": 34,
+      "carbs": 64.8,
+      "id": "G26aJFQ"
+    },
+    {
+      "description": "Chicken Curry",
+      "kcal": 333,
+      "protein": 65,
+      "fat": 44,
+      "carbs": 54,
+      "id": "04Bn9X4"
     }
   ]
 }

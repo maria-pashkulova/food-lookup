@@ -79,6 +79,14 @@
       "fat": 15,
       "carbs": 34.5,
       "id": "f9gYH9h"
+    },
+    {
+      "description": "Pasta Karbonara",
+      "kcal": 540,
+      "protein": 10.5,
+      "fat": 20,
+      "carbs": 60,
+      "id": "uDc-Uu_"
     }
   ]
 }

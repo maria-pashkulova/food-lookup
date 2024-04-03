@@ -6,6 +6,7 @@ import ServerErrorModal from './ServerErrorModal';
 import { useState } from 'react';
 import { search } from '../api/foodService';
 import { useAddFoodItem } from './SelectedFoodItemsContext';
+import HeaderRow from './HeaderRow';
 
 
 function SearchFoodTable() {
@@ -75,13 +76,7 @@ function SearchFoodTable() {
 
                         </th>
                     </tr>
-                    <tr>
-                        <th className='bg-light'>Description</th>
-                        <th className='bg-light'>Kcal</th>
-                        <th className='bg-light'>Protein(g)</th>
-                        <th className='bg-light'>Fat(g)</th>
-                        <th className='bg-light'>Carbs(g)</th>
-                    </tr>
+                    <HeaderRow />
                 </thead>
                 <tbody>
                     {foodItemsMatch.map(foodItem => (

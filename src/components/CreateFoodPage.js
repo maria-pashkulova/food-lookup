@@ -64,7 +64,7 @@ function CreateFoodPage() {
             />
             <div className='container mt-4 w-50'>
                 <h3>Create Food Item</h3>
-                <Form onSubmit={handleFormSubmit} className='mt-4'>
+                <Form noValidate onSubmit={handleFormSubmit} className='mt-4'>
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="description">
                             <Form.Label>Description</Form.Label>

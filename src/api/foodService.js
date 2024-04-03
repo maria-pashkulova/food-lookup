@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost:4000/food';
 
 export function search(searchQuery, updateMatches) {
 
-    return fetch(`${baseUrl}?description_like=${searchQuery}`, {
+    return fetch(`${baseUrl}?description_like=${searchQuery}&_limit=10`, {
         headers: {
             Accept: 'application/json'
         }

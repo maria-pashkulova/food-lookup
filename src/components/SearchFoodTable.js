@@ -3,7 +3,10 @@ import Form from 'react-bootstrap/Form';
 import styles from './SearchFoodTable.module.css';
 import FoodRecord from './FoodRecord';
 import ServerErrorModal from './ServerErrorModal';
+
 import { useState } from 'react';
+import useModal from '../custom-hooks/useModal';
+
 import { search, deleteFoodItem } from '../api/foodService';
 import { useAddFoodItem, useRemoveFoodItem } from './SelectedFoodItemsContext';
 import HeaderRow from './HeaderRow';
@@ -29,8 +32,7 @@ function SearchFoodTable() {
     const [showCancelSearch, setShowCancelSearch] = useState(false);
 
     //errors connecting with server
-    const [showErrModal, setShowErrModal] = useState(false);
-
+    const { isShowing, toggle } = useModal();
 
     /*-------------Handlers---------- */
 
@@ -41,7 +43,7 @@ function SearchFoodTable() {
             .then(() => changeSelectedFoodItemsOnDbDelete(foodItem))
             .catch(err => {
                 console.log(err.response);
-                setShowErrModal(true)
+                toggle()
             });
 
         //if delete is successful:
@@ -60,7 +62,7 @@ function SearchFoodTable() {
         //(whitespace handling included)
         if (searchQuery.trim().length >= 3) {
             search(searchQuery.trim(), (searchMatches => setFoodItemsMatch(searchMatches)))
-                .catch(err => setShowErrModal(true))
+                .catch(err => toggle())
         } else if (searchQuery.trim() === '') {
             setFoodItemsMatch([]);
         }
@@ -75,13 +77,11 @@ function SearchFoodTable() {
         setShowCancelSearch(false);
     }
 
-    const handleErrModalClose = () => setShowErrModal(false);
-
     return (
         <>
             <ServerErrorModal
-                errorOccured={showErrModal}
-                handleClose={handleErrModalClose}
+                errorOccured={isShowing}
+                handleClose={toggle}
             />
             <Table bordered hover className='mt-5'>
                 <thead className='fs-5'>

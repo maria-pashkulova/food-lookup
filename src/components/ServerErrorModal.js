@@ -11,7 +11,7 @@ function ServerErrorModal({
             <Modal.Header closeButton>
                 <Modal.Title>Oops..</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Problem connecting to server encountered! Please try again.</Modal.Body>
+            <Modal.Body>Encountered a problem! Please try again.</Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close

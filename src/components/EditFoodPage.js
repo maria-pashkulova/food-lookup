@@ -7,8 +7,11 @@ import Container from 'react-bootstrap/Container';
 import ServerErrorModal from './ServerErrorModal';
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
 import { useEffect, useState } from 'react';
+import useModal from '../custom-hooks/useModal';
 import { useEditFoodItem } from './SelectedFoodItemsContext';
+
 import { getById, editFoodItem } from '../api/foodService';
 import validateFormInput from '../helpers/formValidation';
 
@@ -32,13 +35,13 @@ function EditFoodPage() {
     const [errors, setErrors] = useState({});
 
     //errors connecting with server
-    const [showErrModal, setShowErrModal] = useState(false);
+    const { isShowing, toggle } = useModal();
 
     useEffect(() => {
 
         //populate form with food item's data
         getById(foodId, (foodData => setFoodData(foodData)))
-            .catch(err => setShowErrModal(true))
+            .catch(err => navigate('/'))
 
     }, [foodId]);
 
@@ -65,20 +68,16 @@ function EditFoodPage() {
         editFoodItem(foodId, foodData)
             .then((editedFoodItem) => changeSelectedFoodItemsOnDbUpdate(editedFoodItem))
             .then(() => navigate('/'))
-            .catch(err => setShowErrModal(true));
+            .catch(err => toggle());
 
-        //edit food item in selectedFoodState
+        //edit food item in selectedFoodState if edit in db was successful
     }
-
-
-    const handleErrModalClose = () => setShowErrModal(false);
-
 
     return (
         <>
             <ServerErrorModal
-                errorOccured={showErrModal}
-                handleClose={handleErrModalClose}
+                errorOccured={isShowing}
+                handleClose={toggle}
             />
             <Container className='mt-4 w-50'>
                 <h3>Edit Food Item</h3>

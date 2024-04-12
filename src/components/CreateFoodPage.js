@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createFoodItem } from '../api/foodService';
 import validateFormInput from '../helpers/formValidation';
+import useModal from '../custom-hooks/useModal';
+
 
 const formInitialState = {
     description: '',
@@ -28,7 +30,7 @@ function CreateFoodPage() {
     const [errors, setErrors] = useState({});
 
     //errors connecting with server
-    const [showErrModal, setShowErrModal] = useState(false);
+    const { isShowing, toggle } = useModal();
 
     const handleInputChange = (e) => {
 
@@ -51,17 +53,14 @@ function CreateFoodPage() {
 
         createFoodItem(foodData)
             .then(() => navigate('/'))
-            .catch(err => setShowErrModal(true));
+            .catch(err => toggle());
     }
-
-    const handleErrModalClose = () => setShowErrModal(false);
-
 
     return (
         <>
             <ServerErrorModal
-                errorOccured={showErrModal}
-                handleClose={handleErrModalClose}
+                errorOccured={isShowing}
+                handleClose={toggle}
             />
             <Container className='mt-4 w-50'>
                 <h3>Create Food Item</h3>

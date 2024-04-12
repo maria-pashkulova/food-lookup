@@ -1,5 +1,20 @@
 const baseUrl = 'http://localhost:4000/food';
 
+export function getById(foodItemId, updateFoodData) {
+    return fetch(`${baseUrl}/${foodItemId}`)
+        .then(checkStatus)
+        .then(parseJSON)
+        .then(({ description, kcal, protein, fat, carbs }) => ({
+            description,
+            kcal: kcal.toString(),
+            protein: protein.toString(),
+            fat: fat.toString(),
+            carbs: carbs.toString(),
+        }))
+        .then(updateFoodData);
+
+}
+
 export function search(searchQuery, updateMatches) {
 
     return fetch(`${baseUrl}?description_like=${searchQuery}&_limit=10`, {
@@ -46,6 +61,25 @@ export function createFoodItem({ description, kcal, protein, fat, carbs }) {
             'Content-Type': 'application/json'
         }
     }).then(checkStatus);
+}
+
+export function editFoodItem(foodItemId, { description, kcal, protein, fat, carbs }) {
+
+    return fetch(`${baseUrl}/${foodItemId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            description: description.trim(),
+            kcal: Number(kcal),
+            protein: Number(protein),
+            fat: Number(fat),
+            carbs: Number(carbs)
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(checkStatus)
+        .then(parseJSON);
 }
 
 export function deleteFoodItem(foodItemId) {

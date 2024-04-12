@@ -19,7 +19,11 @@ function FoodRecord({
                 addActionButtons &&
 
                 <td>
-                    <Button className='mx-2' as={Link} to={`/edit/${foodItem.id}`} variant="primary">Edit</Button>
+                    <Button
+                        className='mx-2'
+                        as={Link} to={`/edit/${foodItem.id}`}
+                        variant="primary"
+                        onClick={(e) => e.stopPropagation()}>Edit</Button>
                     <Button
                         variant="danger"
                         onClick={(e) => {

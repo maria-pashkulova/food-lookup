@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function TablesPage() {
 
     return (
-        <Container className='mt-4'>
+        <Container className='my-4'>
             <SelectedFoodTable />
             <SearchFoodTable />
             <Button as={Link} to="/create" variant="primary">Create Food</Button>

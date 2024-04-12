@@ -33,7 +33,6 @@ function checkStatus(response) {
     } else {
         const error = new Error(`Http Error ${response.statusText}`);
         error.response = response;
-        console.log(error);
         throw error;
     }
 }

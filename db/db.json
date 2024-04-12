@@ -22,7 +22,7 @@
       "kcal": 165,
       "protein": 31,
       "fat": 3.6,
-      "carbs": 0
+      "carbs": 21
     },
     {
       "id": "4",
@@ -177,12 +177,12 @@
       "id": "04Bn9X4"
     },
     {
-      "description": "Item to edit edited",
-      "kcal": 393,
-      "protein": 33,
+      "description": "Food to edit edited edited edittt",
+      "kcal": 30,
+      "protein": 39,
       "fat": 3,
-      "carbs": 44,
-      "id": "HARCFN0"
+      "carbs": 30,
+      "id": "ITGx-CN"
     }
   ]
 }

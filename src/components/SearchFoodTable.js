@@ -18,10 +18,6 @@ function SearchFoodTable() {
 
     const [foodItemsMatch, setFoodItemsMatch] = useState([]);
 
-    // const changeFoodItemsMatchOnDbEdit = () => {
-
-    // }
-
     const changeFoodItemsMatchOnDbDelete = (deletedFoodItemId) => {
         setFoodItemsMatch(searchMatches => searchMatches.filter(foodItem => foodItem.id !== deletedFoodItemId))
     }
@@ -41,13 +37,17 @@ function SearchFoodTable() {
     const handleDelete = (foodItem) => {
         //delete request
         deleteFoodItem(foodItem.id)
-            .catch(err => setShowErrModal(true));
+            .then(() => changeFoodItemsMatchOnDbDelete(foodItem.id))
+            .then(() => changeSelectedFoodItemsOnDbDelete(foodItem))
+            .catch(err => {
+                console.log(err.response);
+                setShowErrModal(true)
+            });
 
+        //if delete is successful:
         //change foodItemsMatch in Search Food Table
-        changeFoodItemsMatchOnDbDelete(foodItem.id);
-
         //change selectedFoodTable
-        changeSelectedFoodItemsOnDbDelete(foodItem);
+
     }
 
 

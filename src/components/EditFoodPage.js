@@ -43,7 +43,7 @@ function EditFoodPage() {
         getById(foodId, (foodData => setFoodData(foodData)))
             .catch(err => navigate('/'))
 
-    }, [foodId]);
+    }, [foodId, navigate]);
 
     const handleInputChange = (e) => {
 

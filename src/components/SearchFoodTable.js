@@ -4,15 +4,27 @@ import styles from './SearchFoodTable.module.css';
 import FoodRecord from './FoodRecord';
 import ServerErrorModal from './ServerErrorModal';
 import { useState } from 'react';
-import { search } from '../api/foodService';
-import { useAddFoodItem } from './SelectedFoodItemsContext';
+import { search, deleteFoodItem } from '../api/foodService';
+import { useAddFoodItem, useRemoveFoodItem } from './SelectedFoodItemsContext';
 import HeaderRow from './HeaderRow';
+
 
 
 function SearchFoodTable() {
     const onFoodItemClick = useAddFoodItem();
+    const changeSelectedFoodItemsOnDbDelete = useRemoveFoodItem();
+
+    /*-------------States---------- */
 
     const [foodItemsMatch, setFoodItemsMatch] = useState([]);
+
+    // const changeFoodItemsMatchOnDbEdit = () => {
+
+    // }
+
+    const changeFoodItemsMatchOnDbDelete = (deletedFoodItem) => {
+        setFoodItemsMatch(searchMatches => searchMatches.filter(foodItem => foodItem.id !== deletedFoodItem.id))
+    }
 
     //Make search input a controlled component
     const [searchInput, setSearchInput] = useState('');
@@ -22,6 +34,22 @@ function SearchFoodTable() {
 
     //errors connecting with server
     const [showErrModal, setShowErrModal] = useState(false);
+
+
+    /*-------------Handlers---------- */
+
+    const handleDelete = (foodItem) => {
+        //delete request
+        deleteFoodItem(foodItem)
+            .catch(err => setShowErrModal(true));
+
+        //change foodItemsMatch in Search Food Table
+        changeFoodItemsMatchOnDbDelete(foodItem);
+
+        //change selectedFoodTable
+        changeSelectedFoodItemsOnDbDelete(foodItem);
+    }
+
 
     const handleSearch = (e) => {
         //controlled component
@@ -85,6 +113,7 @@ function SearchFoodTable() {
                             foodItem={foodItem}
                             onFoodItemClick={onFoodItemClick}
                             addActionButtons={true}
+                            onDelete={handleDelete}
                         />
                     ))}
                 </tbody>

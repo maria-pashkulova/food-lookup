@@ -47,3 +47,10 @@ export function createFoodItem({ description, kcal, protein, fat, carbs }) {
         }
     }).then(checkStatus);
 }
+
+export function deleteFoodItem({ id }) {
+    return fetch(`${baseUrl}/${id}`, {
+        method: 'DELETE'
+    }).then(checkStatus);
+
+}

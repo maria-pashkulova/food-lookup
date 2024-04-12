@@ -8,6 +8,7 @@ import ServerErrorModal from './ServerErrorModal';
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useEditFoodItem } from './SelectedFoodItemsContext';
 import { getById, editFoodItem } from '../api/foodService';
 import validateFormInput from '../helpers/formValidation';
 
@@ -22,8 +23,9 @@ const formInitialState = {
 function EditFoodPage() {
 
     const navigate = useNavigate();
-
     const { foodId } = useParams();
+    const changeSelectedFoodItemsOnDbUpdate = useEditFoodItem();
+
 
     const [foodData, setFoodData] = useState(formInitialState);
     //error message for each form input; client-side validation
@@ -38,7 +40,7 @@ function EditFoodPage() {
         getById(foodId, (foodData => setFoodData(foodData)))
             .catch(err => setShowErrModal(true))
 
-    }, []);
+    }, [foodId]);
 
     const handleInputChange = (e) => {
 
@@ -60,7 +62,8 @@ function EditFoodPage() {
         if (Object.keys(formErrors).length) return;
 
         //edit food item in DB
-        const editedFoodItem = editFoodItem(foodId, foodData)
+        editFoodItem(foodId, foodData)
+            .then((editedFoodItem) => changeSelectedFoodItemsOnDbUpdate(editedFoodItem))
             .then(() => navigate('/'))
             .catch(err => setShowErrModal(true));
 

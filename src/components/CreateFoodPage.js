@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 import ServerErrorModal from './ServerErrorModal';
 
@@ -62,7 +63,7 @@ function CreateFoodPage() {
                 errorOccured={showErrModal}
                 handleClose={handleErrModalClose}
             />
-            <div className='container mt-4 w-50'>
+            <Container className='mt-4 w-50'>
                 <h3>Create Food Item</h3>
                 <Form noValidate onSubmit={handleFormSubmit} className='mt-4'>
                     <Row className="mb-3">
@@ -145,7 +146,7 @@ function CreateFoodPage() {
                         Back
                     </Button>
                 </Form>
-            </div>
+            </Container>
         </>
 
     )

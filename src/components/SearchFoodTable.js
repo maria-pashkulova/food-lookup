@@ -58,7 +58,7 @@ function SearchFoodTable() {
             <Table bordered hover className='mt-5'>
                 <thead className='fs-5'>
                     <tr>
-                        <th colSpan='5' className='bg-light'>
+                        <th colSpan='6' className='bg-light'>
                             <div className={styles.searchContainer}>
                                 <Form.Control className='mt-3 mb-3 me-2 w-auto'
                                     placeholder="Search foods..."
@@ -76,7 +76,7 @@ function SearchFoodTable() {
 
                         </th>
                     </tr>
-                    <HeaderRow />
+                    <HeaderRow addActionHeader={true} />
                 </thead>
                 <tbody>
                     {foodItemsMatch.map(foodItem => (
@@ -84,6 +84,7 @@ function SearchFoodTable() {
                             key={foodItem.id}
                             foodItem={foodItem}
                             onFoodItemClick={onFoodItemClick}
+                            addActionButtons={true}
                         />
                     ))}
                 </tbody>

@@ -48,8 +48,8 @@ export function createFoodItem({ description, kcal, protein, fat, carbs }) {
     }).then(checkStatus);
 }
 
-export function deleteFoodItem({ id }) {
-    return fetch(`${baseUrl}/${id}`, {
+export function deleteFoodItem(foodItemId) {
+    return fetch(`${baseUrl}/${foodItemId}`, {
         method: 'DELETE'
     }).then(checkStatus);
 

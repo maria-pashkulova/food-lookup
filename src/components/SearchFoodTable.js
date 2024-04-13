@@ -42,7 +42,6 @@ function SearchFoodTable() {
             .then(() => changeFoodItemsMatchOnDbDelete(foodItem.id))
             .then(() => changeSelectedFoodItemsOnDbDelete(foodItem))
             .catch(err => {
-                console.log(err.response);
                 toggle()
             });
 
@@ -62,7 +61,7 @@ function SearchFoodTable() {
         //(whitespace handling included)
         if (searchQuery.trim().length >= 3) {
             search(searchQuery.trim(), (searchMatches => setFoodItemsMatch(searchMatches)))
-                .catch(err => toggle())
+                .catch(err => console.error(err));
         } else if (searchQuery.trim() === '') {
             setFoodItemsMatch([]);
         }

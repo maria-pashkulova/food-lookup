@@ -1,5 +1,5 @@
 ## About
-Food Lookup application includes dynamic search functionality for retrieving nutritional information from a food database. Users can click on search results to include selected items in a 'Selected foods' table, which aggregates nutritional totals. Additionally, when they click on a food item in the 'Selected foods' table that item gets excluded from the table. What is more, users have the ability to add new food items by inputting the data into a validated form.
+Food Lookup application includes dynamic search functionality for retrieving nutritional information from a food database. Users can click on search results to include selected items in a 'Selected foods' table, which aggregates nutritional totals. Additionally, when they click on a food item in the 'Selected foods' table that item gets excluded from the table. What is more, users have the ability to delete a food item, create new food items or edit existing ones by inputting the data into a validated form.
 
 ## Developed with
 * React

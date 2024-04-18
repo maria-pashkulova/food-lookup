@@ -17,11 +17,14 @@ npm start
 npm run start-json-server
 ```
 ## Sreenshots
-![image](https://github.com/maria-pashkulova/food-lookup/assets/132500391/68fbdbde-5af4-4023-8d0b-98aa23838020)
-![image](https://github.com/maria-pashkulova/food-lookup/assets/132500391/aaa42f37-5622-434e-a1d9-42eec5da3d5b)
-![image](https://github.com/maria-pashkulova/food-lookup/assets/132500391/d296e7bd-48da-4c35-97c8-d47e328e0ee1)
+![1](https://github.com/maria-pashkulova/food-lookup/assets/132500391/aecab1ae-90d5-4a7f-ad23-9fc8bf9d81f4)
+![2](https://github.com/maria-pashkulova/food-lookup/assets/132500391/1a5e3c36-d8d8-4974-9dcb-a637dd7b8cf6)
 ![image](https://github.com/maria-pashkulova/food-lookup/assets/132500391/43b76420-0bc9-43cc-af1c-025853b2f5d9)
-![image](https://github.com/maria-pashkulova/food-lookup/assets/132500391/3c571734-bfb4-4579-8c3b-37d15d2f1e8d)
+![Screenshot_5](https://github.com/maria-pashkulova/food-lookup/assets/132500391/ff57b697-c002-47cd-b171-728b19c42df5)
+![3](https://github.com/maria-pashkulova/food-lookup/assets/132500391/12f3a952-29fd-482f-821e-6bc73a6641c9)
+![4](https://github.com/maria-pashkulova/food-lookup/assets/132500391/e94b4071-8cd9-4950-95bb-1b54505bae04)
+
+
 
 
 

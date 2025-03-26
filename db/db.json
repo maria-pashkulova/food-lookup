@@ -177,20 +177,20 @@
       "id": "04Bn9X4"
     },
     {
-      "description": "Food to edit",
-      "kcal": 30,
-      "protein": 39,
-      "fat": 3,
-      "carbs": 30,
-      "id": "ITGx-CN"
+      "description": "Lettuce Salad",
+      "kcal": 234,
+      "protein": 33,
+      "fat": 23,
+      "carbs": 42.5,
+      "id": "OSefgAj"
     },
     {
-      "description": "Food to delete",
-      "kcal": 134,
-      "protein": 23,
-      "fat": 34,
-      "carbs": 34,
-      "id": "yWZ8pj2"
+      "description": "Green Apple",
+      "kcal": 65,
+      "protein": 12,
+      "fat": 0,
+      "carbs": 43,
+      "id": "NbGxKcL"
     }
   ]
 }

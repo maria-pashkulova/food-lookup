@@ -10,7 +10,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import useModal from "../custom-hooks/useModal";
-import { useEditFoodItem } from "./SelectedFoodItemsContext";
+import { useSelectedFoodItems } from "./SelectedFoodItemsContext";
 
 import { getById, editFoodItem } from "../api/foodService";
 import validateFormInput from "../helpers/formValidation";
@@ -27,7 +27,9 @@ const formInitialState = {
 function EditFoodPage() {
   const navigate = useNavigate();
   const { foodId } = useParams();
-  const changeSelectedFoodItemsOnDbUpdate = useEditFoodItem();
+
+  const { handleEditFoodItem: changeSelectedFoodItemsOnDbUpdate } =
+    useSelectedFoodItems();
 
   const { formValues, onChangeHandler, populateForm } =
     useForm(formInitialState);
